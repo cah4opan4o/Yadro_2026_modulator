@@ -31,23 +31,22 @@ inline const complex_signal QPSK_constellation = {
 };
 
 inline const complex_signal QAM16_constellation = {
-    {1.0 / sqrt(10), 1.0 / sqrt(10)},   // 0000
-    {-1.0 / sqrt(10), 1.0 / sqrt(10)},  // 0001
-    {-1.0 / sqrt(10), -1.0 / sqrt(10)}, // 0011
-    {1.0 / sqrt(10), -1.0 / sqrt(10)},  // 0010
-    {3.0 / sqrt(10), 3.0 / sqrt(10)},   // 0100
-    {-3.0 / sqrt(10), 3.0 / sqrt(10)},  // 0101
-    {-3.0 / sqrt(10), -3.0 / sqrt(10)}, // 0111
-    {3.0 / sqrt(10), -3.0 / sqrt(10)},  // 0110
-    {1.0 / sqrt(10), 3.0 / sqrt(10)},   // 1000
-    {-1.0 / sqrt(10), 3.0 / sqrt(10)},  // 1001
-    {-1.0 / sqrt(10), -3.0 / sqrt(10)}, // 1011
-    {1.0 / sqrt(10), -3.0 / sqrt(10)},  // 1010
-    {3.0 / sqrt(10), 1.0 / sqrt(10)},   // 1100
-    {-3.0 / sqrt(10), 1.0 / sqrt(10)},  // 1101
-    {-3.0 / sqrt(10), -1.0 / sqrt(10)}, // 1111
-    {3.0 / sqrt(10), -1.0 / sqrt(10)}   // 1110
-};
+    {-3 / sqrt(10.0), -3 / sqrt(10.0)},
+    {-3 / sqrt(10.0), -1 / sqrt(10.0)},
+    {-3 / sqrt(10.0), 3 / sqrt(10.0)},
+    {-3 / sqrt(10.0), 1 / sqrt(10.0)},
+    {-1 / sqrt(10.0), -3 / sqrt(10.0)},
+    {-1 / sqrt(10.0), -1 / sqrt(10.0)},
+    {-1 / sqrt(10.0), 3 / sqrt(10.0)},
+    {-1 / sqrt(10.0), 1 / sqrt(10.0)},
+    {3 / sqrt(10.0), -3 / sqrt(10.0)},
+    {3 / sqrt(10.0), -1 / sqrt(10.0)},
+    {3 / sqrt(10.0), 3 / sqrt(10.0)},
+    {3 / sqrt(10.0), 1 / sqrt(10.0)},
+    {1 / sqrt(10.0), -3 / sqrt(10.0)},
+    {1 / sqrt(10.0), -1 / sqrt(10.0)},
+    {1 / sqrt(10.0), 3 / sqrt(10.0)},
+    {1 / sqrt(10.0), 1 / sqrt(10.0)}};
 
 inline const complex_signal QAM64_constellation = {
     {-7 / sqrt(42.0), -7 / sqrt(42.0)},

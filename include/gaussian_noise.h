@@ -8,6 +8,8 @@ public:
     GaussianNoise(); // Constructor
     void add_noise(const complex_signal *input,
                    complex_signal *output,
-                   int length, double snr_db);
+                   int length,
+                   double snr_db,
+                   int bits_per_symbol);
 };
 #endif // GAUSSIAN_NOISE_H

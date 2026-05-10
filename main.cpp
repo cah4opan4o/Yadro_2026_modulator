@@ -23,7 +23,7 @@ vector<int> generate_bit_stream(int length = 1008)
 int main()
 {
     int iterations = 1000;
-    int bits_count = 10002; // Кратно 2, 4 и 6
+    int bits_count = 30000; // Кратно 2, 4 и 6
 
     vector<double> snr_values;
     for (double snr = 1; snr < 20; snr++)
@@ -62,7 +62,7 @@ int main()
                 complex_signal modulated = modulator.modulate(input_bits);
 
                 complex_signal noisy(modulated.size());
-                noise.add_noise(&modulated, &noisy, modulated.size(), snr);
+                noise.add_noise(&modulated, &noisy, modulated.size(), snr, modulator.bits_per_symbol);
 
                 vector<int> decoded_bits = demodulator.demodulate(&noisy);
 
