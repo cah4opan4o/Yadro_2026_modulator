@@ -13,7 +13,7 @@
 #include <omp.h>
 
 using namespace std;
-using complex_signal = vector<complex<double>>;
+using complex_signal = vector<complex<float>>;
 
 enum modulation_type
 {

@@ -68,15 +68,15 @@ void Demodulator::find_nearest_and_decode(const complex_signal *input,
 {
     for (size_t i = 0; i < input->size(); ++i)
     {
-        complex<double> received = (*input)[i];
+        complex<float> received = (*input)[i];
         int best_index = 0;
-        double min_dist = numeric_limits<double>::max();
+        float min_dist = numeric_limits<float>::max();
 
         // Ищем точку созвездия с минимальным расстоянием до принятой
         for (int j = 0; j < (1 << bits_per_symbol); ++j)
         {
 
-            double dist = pow(abs(received - constellation[j]), 2);
+            float dist = pow(abs(received - constellation[j]), 2);
             if (dist < min_dist)
             {
                 min_dist = dist;

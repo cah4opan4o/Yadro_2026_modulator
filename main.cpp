@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<int> generate_bit_stream(int length = 1008)
+vector<int> generate_bit_stream(int length)
 {
     vector<int> bits(length);
     random_device rd;
@@ -25,15 +25,15 @@ int main()
     int iterations = 1000;
     int bits_count = 30000; // Кратно 2, 4 и 6
 
-    vector<double> snr_values;
-    for (double snr = 1; snr < 20; snr++)
+    vector<float> snr_values;
+    for (float snr = 1; snr < 20; snr++)
     {
         snr_values.push_back(snr);
     }
 
     ofstream file("results.csv");
     file << "Modulation/SNR";
-    for (double snr : snr_values)
+    for (float snr : snr_values)
     {
         file << "," << snr;
     }
@@ -51,9 +51,9 @@ int main()
                                                        : "QAM64";
         file << mod_name;
 
-        for (double snr : snr_values)
+        for (float snr : snr_values)
         {
-            double total_ber = 0.0;
+            float total_ber = 0.0;
             #pragma omp parallel for reduction(+ : total_ber)
             for (int j = 0; j < iterations; j++)
             {
@@ -72,10 +72,10 @@ int main()
                     if (input_bits[k] != decoded_bits[k])
                         errors++;
                 }
-                total_ber += (double)errors / input_bits.size();
+                total_ber += (float)errors / input_bits.size();
             }
 
-            double avg_ber = total_ber / iterations;
+            float avg_ber = total_ber / iterations;
             file << "," << avg_ber;
 
             cout << mod_name << " | SNR: " << snr << " | BER: " << avg_ber << endl;

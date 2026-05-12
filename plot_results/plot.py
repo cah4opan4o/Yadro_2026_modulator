@@ -21,21 +21,17 @@ def plot_ber():
 
     plt.figure(figsize=(12, 8))
     snr_axis = df.columns[1:].astype(float)
-    # Генерируем плавную кривую для теории
+    # Генерируем кривую для теории
     theory_snr = np.linspace(snr_axis.min(), snr_axis.max(), 100)
 
-    # Цвета для графиков, чтобы симуляция и теория одного типа модуляции совпадали
     colors = ['blue', 'red', 'green']
     mod_names = ["QPSK", "QAM16", "QAM64"]
 
-    # --- 1. Отрисовка экспериментальных данных (Соединенные точки) ---
     for i, (index, row) in enumerate(df.iterrows()):
         label = f"Sim: {row.iloc[0]}"
-        # '-o' означает сплошную линию с круглыми маркерами
         plt.semilogy(snr_axis, row.iloc[1:].astype(float), '-o', 
                      label=label, color=colors[i], linewidth=1.5, markersize=5)
 
-    # --- 2. Отрисовка теории (Пунктирные линии) ---
     plt.semilogy(theory_snr, theoretical_ber_qpsk(theory_snr), 
                  '--', color=colors[0], alpha=0.6, label='Theory: QPSK')
     
@@ -47,7 +43,7 @@ def plot_ber():
 
     # Оформление графика
     plt.grid(True, which="both", ls="-", alpha=0.3)
-    plt.xlabel('SNR (Eb/No) (dB)', fontsize=12)
+    plt.xlabel('SNR (Eb/N0) (dB)', fontsize=12)
     plt.ylabel('Bit Error Rate (BER)', fontsize=12)
     plt.title('Сравнение симуляции и теоретического BER (Gray Code)', fontsize=14)
     plt.legend()
